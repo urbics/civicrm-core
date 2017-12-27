@@ -15,11 +15,12 @@ class CRM_Core_CodeGen_Config extends CRM_Core_CodeGen_BaseTask {
       'drupal8',
       'joomla',
       'wordpress',
+      'nocms',
     ))) {
       echo "Config file for '{$this->config->cms}' not known.";
       exit();
     }
-    elseif ($this->config->cms !== 'joomla') {
+    elseif ($this->config->cms !== 'joomla' and $this->config->cms !== 'nocms') {
       $configTemplate = $this->findConfigTemplate($this->config->cms);
       if ($configTemplate) {
         echo "Generating civicrm.config.php\n";
